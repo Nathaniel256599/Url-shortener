@@ -49,5 +49,5 @@ def not_found(e):
 if __name__ == '__main__':
     import os
     port = int(os.environ.get('PORT', 5000))
-    # Bind to 0.0.0.0 so Render can reach it
+    # IMPORTANT: Bind to 0.0.0.0, NOT 127.0.0.1
     app.run(host='0.0.0.0', port=port, debug=False)
