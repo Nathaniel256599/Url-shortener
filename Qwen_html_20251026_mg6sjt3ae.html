@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivyLink – Private URL Shortener</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>PrivyLink</h1>
+        <p class="subtitle">A privacy-first URL shortener. No tracking. No cookies. Just short links.</p>
+
+        <form method="POST">
+            <input type="url" name="url" placeholder="Paste your long URL here..." required>
+            <button type="submit">Shorten</button>
+        </form>
+
+        {% if short_url %}
+        <div class="result">
+            <p>Your short link:</p>
+            <div class="short-url-box">
+                <input type="text" id="shortUrl" value="{{ short_url }}" readonly>
+                <button onclick="copyToClipboard()">Copy</button>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <script>
+        function copyToClipboard() {
+            const urlInput = document.getElementById('shortUrl');
+            urlInput.select();
+            document.execCommand('copy');
+            alert('Copied to clipboard!');
+        }
+    </script>
+</body>
+</html>
